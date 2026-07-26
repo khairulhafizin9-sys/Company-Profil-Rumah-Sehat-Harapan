@@ -1,0 +1,3388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Company Profile 2026 - Yayasan Rumah Sehat Harapan</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- html2pdf.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        /* ============================================================ */
+        /* SEMUA STYLE SAMA SEPERTI SEBELUMNYA */
+        /* ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A3A5C;
+            --primary-dark: #0F2440;
+            --primary-light: #2A5A8C;
+            --secondary: #8B6B4A;
+            --gold: #C9A96E;
+            --text-dark: #1A1A2E;
+            --text-gray: #4A4A5A;
+            --text-light: #F8FAFC;
+            --bg-soft: #F7F5F2;
+            --bg-card: #FFFFFF;
+            --shadow: 0 12px 40px rgba(15, 36, 64, 0.08);
+            --shadow-hover: 0 20px 50px rgba(15, 36, 64, 0.14);
+            --shadow-sm: 0 4px 16px rgba(15, 36, 64, 0.05);
+            --radius: 20px;
+            --radius-sm: 10px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-soft);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* ============================================================ */
+        /* TOMBOL PDF & PRINT */
+        /* ============================================================ */
+        .pdf-toolbar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-pdf,
+        .btn-print {
+            background: var(--primary);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50px;
+            padding: 14px 28px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(15, 36, 64, 0.3);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-pdf:hover,
+        .btn-print:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(201, 169, 110, 0.4);
+        }
+
+        .btn-pdf i,
+        .btn-print i {
+            font-size: 1.2rem;
+        }
+
+        .btn-pdf.loading,
+        .btn-print.loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .btn-print {
+            background: var(--secondary);
+        }
+
+        .btn-print:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        /* ============================================================ */
+        /* TYPOGRAPHY */
+        /* ============================================================ */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+        }
+        h2 {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            margin-bottom: 10px;
+        }
+        h3 {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+        }
+        h4 {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+        }
+        p {
+            color: var(--text-gray);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 16px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        .section-badge.gold {
+            background: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        .section-title {
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            max-width: 100%;
+        }
+
+        /* ============================================================ */
+        /* LOGO STYLE */
+        /* ============================================================ */
+        .logo-text {
+            font-weight: 900;
+            font-size: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .logo-text .highlight {
+            color: var(--secondary);
+        }
+
+        .logo-text .gold {
+            color: var(--gold);
+        }
+
+        .logo-hero {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            font-weight: 900;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .logo-hero i {
+            color: var(--gold);
+            font-size: clamp(2rem, 6vw, 2.8rem);
+        }
+
+        .logo-hero .highlight {
+            color: var(--gold);
+        }
+
+        .logo-footer {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-footer i {
+            color: var(--gold);
+            font-size: 1.4rem;
+        }
+
+        .logo-footer .highlight {
+            color: var(--gold);
+        }
+
+        /* ============================================================ */
+        /* NAVIGASI */
+        /* ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 4px 20px rgba(15, 36, 64, 0.06);
+            z-index: 999;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(139, 107, 74, 0.08);
+        }
+
+        .navbar .container {
+            max-width: 600px;
+        }
+
+        .navbar .logo-text {
+            font-size: 0.85rem;
+        }
+
+        .navbar .logo-text i {
+            font-size: 1.1rem;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            font-weight: 500;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        /* ============================================================ */
+        /* HERO - TANPA MAP */
+        /* ============================================================ */
+        .hero {
+            background: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            color: var(--text-light);
+            padding: 90px 0 40px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin-top: 56px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero .logo-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            width: 70%;
+            max-width: 500px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.08;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(201, 169, 110, 0.03);
+        }
+
+        .hero .logo-overlay .placeholder-icon {
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .hero .logo-overlay::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 169, 110, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 550px;
+            height: 80%;
+            max-height: 550px;
+            background: rgba(201, 169, 110, 0.04);
+            border-radius: 50%;
+            pointer-events: none;
+            border: 2px solid rgba(201, 169, 110, 0.03);
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            max-width: 420px;
+            height: 60%;
+            max-height: 420px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 50%;
+            pointer-events: none;
+            border: 2px solid rgba(201, 169, 110, 0.02);
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-content .badge-hero {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 0.65rem;
+            padding: 4px 16px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-content .logo-hero {
+            justify-content: center;
+        }
+
+        .hero-content p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            margin: 12px 0 20px;
+            max-width: 100%;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats .stat h3 {
+            color: var(--text-light);
+            font-size: 1.4rem;
+        }
+
+        .hero-stats .stat p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-image .icon-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .hero-image .icon-box .logo-hero {
+            font-size: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-image .icon-box .logo-hero i {
+            font-size: 1.8rem;
+        }
+
+        .hero-image .icon-box p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .hero-image .icon-box .social-links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .hero-image .icon-box .social-links a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .hero-image .icon-box .social-links a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================ */
+        /* SECTION */
+        /* ============================================================ */
+        section {
+            padding: 40px 0;
+        }
+
+        section.bg-white {
+            background: var(--bg-card);
+        }
+
+        section.bg-soft {
+            background: var(--bg-soft);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(15, 36, 64, 0.03);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capacity-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-dark);
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 16px;
+            border-radius: 50px;
+            margin-top: 8px;
+        }
+
+        .capacity-badge i {
+            margin-right: 6px;
+        }
+
+        /* ============================================================ */
+        /* DARURAT NARKOBA */
+        /* ============================================================ */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .stats-grid .stat-box {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 20px 16px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .stats-grid .stat-box:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stats-grid .stat-box .number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .stats-grid .stat-box .label {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-top: 4px;
+        }
+
+        .stats-grid .stat-box.danger {
+            border-left-color: #C0392B;
+        }
+
+        .stats-grid .stat-box.danger .number {
+            color: #C0392B;
+        }
+
+        .stats-grid .stat-box.warning {
+            border-left-color: var(--gold);
+        }
+
+        .stats-grid .stat-box.warning .number {
+            color: var(--gold);
+        }
+
+        .stats-grid .stat-box.success {
+            border-left-color: var(--primary);
+        }
+
+        .stats-grid .stat-box.success .number {
+            color: var(--primary);
+        }
+
+        /* ============================================================ */
+        /* DIAGRAM */
+        /* ============================================================ */
+        .diagram-container {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+
+        .diagram-container h4 {
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .diagram-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .diagram-bar .label-bar {
+            width: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .diagram-bar .bar-track {
+            flex: 1;
+            height: 24px;
+            background: var(--bg-soft);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .diagram-bar .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: var(--text-light);
+            min-width: 30px;
+        }
+
+        .diagram-bar .bar-fill.danger {
+            background: linear-gradient(90deg, #E74C3C, #C0392B);
+        }
+
+        .diagram-bar .bar-fill.warning {
+            background: linear-gradient(90deg, #F39C12, var(--gold));
+        }
+
+        .diagram-bar .bar-fill.success {
+            background: linear-gradient(90deg, #2E86C1, var(--primary));
+        }
+
+        .diagram-bar .bar-fill.info {
+            background: linear-gradient(90deg, #1ABC9C, #16A085);
+        }
+
+        .diagram-bar .bar-value {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            min-width: 50px;
+            text-align: left;
+        }
+
+        .diagram-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--bg-soft);
+        }
+
+        .diagram-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: var(--text-gray);
+        }
+
+        .diagram-legend .legend-item .color-box {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .diagram-legend .legend-item .color-box.danger {
+            background: #C0392B;
+        }
+
+        .diagram-legend .legend-item .color-box.warning {
+            background: var(--gold);
+        }
+
+        .diagram-legend .legend-item .color-box.success {
+            background: var(--primary);
+        }
+
+        .diagram-legend .legend-item .color-box.info {
+            background: #16A085;
+        }
+
+        /* ============================================================ */
+        /* VISI MISI */
+        /* ============================================================ */
+        .visi-misi-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .visi-card {
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+            color: var(--text-light);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid rgba(201, 169, 110, 0.12);
+            text-align: center;
+        }
+
+        .visi-card i {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .visi-card h3 {
+            color: var(--text-light);
+        }
+
+        .visi-card p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .misi-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .misi-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: var(--bg-card);
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .misi-list li:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .misi-list li i {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        /* ============================================================ */
+        /* TUJUAN */
+        /* ============================================================ */
+        .tujuan-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .tujuan-card {
+            text-align: center;
+            padding: 20px 16px;
+        }
+
+        .tujuan-card .icon-circle {
+            width: 56px;
+            height: 56px;
+            background: rgba(26, 58, 92, 0.06);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 1.4rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .tujuan-card:hover .icon-circle {
+            background: var(--primary);
+            color: var(--text-light);
+        }
+
+        /* ============================================================ */
+        /* PROGRAM */
+        /* ============================================================ */
+        .program-card .icon-box {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .program-card:hover .icon-box {
+            background: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        /* ============================================================ */
+        /* REHAB */
+        /* ============================================================ */
+        .rehab-tabs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .rehab-card {
+            border-left: 4px solid var(--primary);
+            padding: 20px 18px;
+        }
+
+        .rehab-card .label {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-bottom: 8px;
+        }
+
+        .rehab-card ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .rehab-card ul li {
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .rehab-card ul li i {
+            color: var(--primary);
+            font-size: 0.7rem;
+        }
+
+        .rehab-card .price-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* ============================================================ */
+        /* SDM */
+        /* ============================================================ */
+        .sdm-item {
+            text-align: center;
+            padding: 20px 16px;
+        }
+
+        .sdm-item .badge-sertif {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--primary-dark);
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            border-radius: 50px;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .sdm-item .badge-sertif.international {
+            background: var(--primary);
+            color: var(--text-light);
+        }
+
+        .sdm-item .konselor-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .sdm-item .sertifikasi-list {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .sdm-item .sertifikasi-keterangan {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* ============================================================ */
+        /* MITRA KERJA - TERINTEGRASI DENGAN PEMERINTAH KOTA BINJAI */
+        /* ============================================================ */
+        .mitra-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mitra-item {
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 16px 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(15, 36, 64, 0.03);
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .mitra-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .mitra-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .mitra-item h4 {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .mitra-item p {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+        }
+
+        /* ============================================================ */
+        /* PENCAPAIAN */
+        /* ============================================================ */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .achievement-item {
+            text-align: center;
+            padding: 20px 12px;
+        }
+
+        .achievement-item .icon-big {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* ============================================================ */
+        /* TESTIMONI */
+        /* ============================================================ */
+        .testimoni-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .testimoni-card {
+            padding: 20px 18px;
+            position: relative;
+        }
+
+        .testimoni-card .quote {
+            font-size: 1.8rem;
+            color: var(--gold);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        .testimoni-card .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .testimoni-card .author .avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-soft);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .testimoni-card .author .name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .testimoni-card .author .role {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+        }
+
+        /* ============================================================ */
+        /* KATA PENUTUP */
+        /* ============================================================ */
+        .penutup-section {
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+            border-radius: var(--radius);
+            padding: 40px 28px;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 16px;
+            border: 1px solid rgba(201, 169, 110, 0.08);
+        }
+
+        .penutup-section h3 {
+            color: var(--text-light);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .penutup-section .penutup-icon {
+            font-size: 2.4rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .penutup-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .penutup-section .motto {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* ============================================================ */
+        /* KUNJUNGI MEDIA SOSIAL */
+        /* ============================================================ */
+        .sosmed-section {
+            background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 16px;
+        }
+
+        .sosmed-section h3 {
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .sosmed-section p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .sosmed-section .sosmed-icons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .sosmed-section .sosmed-icons a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-size: 2.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .sosmed-section .sosmed-icons a:hover {
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        .sosmed-section .sosmed-icons a .label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ============================================================ */
+        /* FAQ */
+        /* ============================================================ */
+        .faq-item {
+            border-bottom: 1px solid rgba(15, 36, 64, 0.05);
+            padding: 14px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .faq-item .question i {
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .faq-item .question:hover i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item .answer {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 6px;
+            display: block;
+        }
+
+        /* ============================================================ */
+        /* MAP (bagian lokasi) */
+        /* ============================================================ */
+        .map-container {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--bg-card);
+            margin-top: 16px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 280px;
+            border: none;
+            display: block;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+            align-items: center;
+        }
+
+        .contact-info .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-card);
+            padding: 10px 18px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            width: 100%;
+            max-width: 320px;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .contact-info .item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-info .item i {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .contact-info .item span,
+        .contact-info .item a {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .contact-info .item a:hover {
+            color: var(--primary);
+        }
+
+        /* ============================================================ */
+        /* TABLE */
+        /* ============================================================ */
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.8rem;
+        }
+
+        .table-wrap th {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-wrap td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--bg-soft);
+        }
+
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrap .total-row {
+            background: var(--primary);
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .table-wrap .total-row td {
+            color: var(--text-light);
+        }
+
+        /* ============================================================ */
+        /* DAILY SCHEDULE - DENGAN SHOLAT 5 WAKTU & WEEKEND */
+        /* ============================================================ */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-card);
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .schedule-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .schedule-item .time {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.85rem;
+            min-width: 80px;
+        }
+
+        .schedule-item .activity {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .schedule-item .activity i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .schedule-item.outpatient {
+            border-left-color: var(--gold);
+        }
+
+        .schedule-item.outpatient .time {
+            color: var(--secondary);
+        }
+
+        /* Warna khusus untuk jadwal sholat */
+        .schedule-item.sholat {
+            border-left-color: #2E7D32;
+        }
+
+        .schedule-item.sholat .time {
+            color: #2E7D32;
+        }
+
+        .schedule-item.sholat .activity i {
+            color: #2E7D32;
+        }
+
+        /* Warna khusus untuk weekend */
+        .schedule-item.weekend {
+            border-left-color: #E67E22;
+        }
+
+        .schedule-item.weekend .time {
+            color: #E67E22;
+        }
+
+        .schedule-item.weekend .activity i {
+            color: #E67E22;
+        }
+
+        .schedule-note {
+            margin-top: 16px;
+            padding: 16px 18px;
+            background: rgba(201, 169, 110, 0.08);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        .schedule-note i {
+            color: var(--gold);
+            margin-right: 6px;
+        }
+
+        .weekend-header {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin: 32px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .weekend-header i {
+            color: var(--gold);
+        }
+
+        /* ============================================================ */
+        /* FLOW CHART ALUR LAYANAN */
+        /* ============================================================ */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin: 20px 0 10px;
+            padding: 0 8px;
+        }
+
+        .flow-step {
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--primary);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .flow-step:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .flow-step .step-number {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            margin-right: 8px;
+        }
+
+        .flow-step .step-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .flow-step .step-desc {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-top: 4px;
+        }
+
+        .flow-arrow {
+            font-size: 1.6rem;
+            color: var(--gold);
+            line-height: 1;
+            padding: 2px 0;
+        }
+
+        .flow-step.alt {
+            border-color: var(--gold);
+        }
+
+        .flow-step.alt .step-number {
+            background: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        .flow-step.end {
+            border-color: var(--primary-dark);
+            background: var(--primary-dark);
+            color: var(--text-light);
+        }
+
+        .flow-step.end .step-number {
+            background: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        .flow-step.end .step-label,
+        .flow-step.end .step-desc {
+            color: var(--text-light);
+        }
+
+        .flow-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 4px;
+        }
+
+        .flow-branch-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .flow-branch-row .flow-step {
+            flex: 1;
+            min-width: 160px;
+            max-width: 200px;
+        }
+
+        .flow-arrow-horizontal {
+            font-size: 1.2rem;
+            color: var(--gold);
+            padding: 0 4px;
+        }
+
+        @media (max-width: 480px) {
+            .flow-branch-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .flow-branch-row .flow-step {
+                max-width: 100%;
+                width: 100%;
+            }
+            .flow-arrow-horizontal {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* ============================================================ */
+        /* STRUKTUR ORGANISASI */
+        /* ============================================================ */
+        .struktur-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .struktur-level {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 20px 18px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .struktur-level:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .struktur-level .level-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .struktur-level .level-title i {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .struktur-level .level-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+
+        .struktur-level .level-items .item {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            background: var(--bg-soft);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .struktur-level .level-items .item .jabatan {
+            font-weight: 400;
+            color: var(--text-gray);
+            font-size: 0.7rem;
+            margin-left: 4px;
+        }
+
+        .struktur-bidang {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .struktur-bidang .bidang-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px 8px;
+        }
+
+        .struktur-bidang .bidang-row .bidang-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.85rem;
+            min-width: 160px;
+        }
+
+        .struktur-bidang .bidang-row .bidang-nama {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .struktur-bidang .bidang-row .bidang-nama .nama-item {
+            display: inline-block;
+            background: var(--bg-soft);
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .struktur-keterangan {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 20px 18px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            margin-top: 8px;
+        }
+
+        .struktur-keterangan h4 {
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+
+        .struktur-keterangan p {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .struktur-keterangan ul {
+            list-style: none;
+            margin-top: 6px;
+        }
+
+        .struktur-keterangan ul li {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .struktur-keterangan ul li i {
+            color: var(--gold);
+            font-size: 0.6rem;
+        }
+
+        .struktur-registrasi {
+            margin-top: 12px;
+            padding: 16px 18px;
+            background: var(--primary-dark);
+            border-radius: var(--radius-sm);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .struktur-registrasi p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            margin: 2px 0;
+        }
+
+        .struktur-registrasi .motto {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* ============================================================ */
+        /* FORM PENDAFTARAN */
+        /* ============================================================ */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .form-group label .required {
+            color: #C0392B;
+            margin-left: 2px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--bg-soft);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--bg-card);
+            color: var(--text-dark);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(26, 58, 92, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A4A5A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+        }
+
+        .form-note {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .form-note i {
+            color: var(--gold);
+            margin-right: 4px;
+        }
+
+        /* ============================================================ */
+        /* FOOTER */
+        /* ============================================================ */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 32px 0 20px;
+            border-radius: 40px 40px 0 0;
+            margin-top: 32px;
+            border-top: 1px solid rgba(201, 169, 110, 0.06);
+        }
+
+        .footer .container {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .footer .brand .logo-footer {
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .footer .brand p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+        }
+
+        .footer .brand .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .footer .brand .contact-row a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer .brand .contact-row a:hover {
+            color: var(--gold);
+        }
+
+        .footer .brand .contact-row i {
+            color: var(--gold);
+        }
+
+        .footer .social {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer .social a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .footer .social a:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .footer .copy {
+            padding-top: 16px;
+            margin-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        /* ============================================================ */
+        /* RESPONSIVE */
+        /* ============================================================ */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            .hero {
+                padding: 80px 0 30px;
+                border-radius: 0 0 30px 30px;
+                margin-top: 50px;
+                min-height: auto;
+            }
+            section {
+                padding: 30px 0;
+            }
+            .hero-stats {
+                gap: 12px;
+            }
+            .hero-stats .stat h3 {
+                font-size: 1.2rem;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .mitra-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .achievement-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .stats-grid .stat-box .number {
+                font-size: 1.5rem;
+            }
+            .contact-info .item {
+                max-width: 100%;
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 18px 14px;
+            }
+            .map-container iframe {
+                height: 200px;
+            }
+            .table-wrap table {
+                font-size: 0.7rem;
+            }
+            .table-wrap th,
+            .table-wrap td {
+                padding: 8px 10px;
+            }
+            .rehab-card {
+                padding: 16px 14px;
+            }
+            .rehab-card ul li {
+                font-size: 0.8rem;
+            }
+            .logo-hero {
+                font-size: 1.6rem;
+            }
+            .logo-hero i {
+                font-size: 1.6rem;
+            }
+            .footer {
+                padding: 24px 0 16px;
+                border-radius: 30px 30px 0 0;
+            }
+            .footer .brand .contact-row {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .btn-pdf,
+            .btn-print {
+                padding: 10px 16px;
+                font-size: 0.7rem;
+            }
+            .diagram-bar .label-bar {
+                width: 70px;
+                font-size: 0.65rem;
+            }
+            .diagram-bar .bar-value {
+                font-size: 0.6rem;
+                min-width: 35px;
+            }
+            .sosmed-section .sosmed-icons a {
+                font-size: 1.8rem;
+            }
+            .penutup-section {
+                padding: 28px 16px;
+            }
+            .penutup-section h3 {
+                font-size: 1.2rem;
+            }
+            .hero .logo-overlay {
+                width: 60%;
+                max-width: 280px;
+            }
+            .hero .logo-overlay .placeholder-icon {
+                font-size: 5rem;
+            }
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+                padding: 12px 14px;
+            }
+            .schedule-item .time {
+                min-width: auto;
+                font-size: 0.75rem;
+            }
+            .flow-step {
+                padding: 12px 14px;
+            }
+            .flow-step .step-label {
+                font-size: 0.85rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .struktur-bidang .bidang-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+            .struktur-bidang .bidang-row .bidang-label {
+                min-width: auto;
+            }
+            .struktur-level .level-items .item {
+                font-size: 0.8rem;
+                padding: 2px 10px;
+            }
+            .weekend-header {
+                font-size: 1rem;
+                margin-top: 24px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .mitra-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .schedule-item {
+                padding: 10px 12px;
+            }
+            .flow-branch-row .flow-step {
+                min-width: 140px;
+            }
+            .struktur-level .level-items .item {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* ============================================================ */
+        /* NAVIGASI MOBILE */
+        /* ============================================================ */
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 12px 0;
+                gap: 10px;
+                border-top: 1px solid rgba(15, 36, 64, 0.05);
+                margin-top: 10px;
+            }
+            .navbar .nav-links.open {
+                display: flex;
+            }
+            .navbar .nav-links a {
+                font-size: 0.8rem;
+                text-align: center;
+            }
+            .navbar .container {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none !important;
+            }
+            .navbar .nav-links {
+                display: flex !important;
+            }
+        }
+
+        /* ============================================================ */
+        /* PRINT */
+        /* ============================================================ */
+        @media print {
+            .pdf-toolbar,
+            .navbar,
+            .mobile-menu {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: auto !important;
+                padding: 60px 0 30px !important;
+                margin-top: 0 !important;
+                border-radius: 0 !important;
+                page-break-after: avoid;
+            }
+
+            .hero .logo-overlay {
+                opacity: 0.06 !important;
+                width: 50% !important;
+                max-width: 350px !important;
+            }
+
+            section {
+                page-break-inside: avoid;
+                padding: 30px 0 !important;
+            }
+
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+
+            .container {
+                max-width: 100% !important;
+                padding: 0 20px !important;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .footer {
+                border-radius: 0 !important;
+                margin-top: 20px !important;
+                padding: 20px 0 !important;
+                page-break-after: avoid;
+            }
+
+            .map-container iframe {
+                height: 200px !important;
+            }
+
+            .sosmed-section .sosmed-icons a {
+                color: #333 !important;
+            }
+
+            .penutup-section {
+                background: #f5f5f5 !important;
+                color: #333 !important;
+            }
+
+            .penutup-section h3 {
+                color: #333 !important;
+            }
+
+            .penutup-section p {
+                color: #555 !important;
+            }
+
+            .penutup-section .motto {
+                color: var(--primary) !important;
+            }
+
+            .flow-step {
+                border-color: #333 !important;
+            }
+            .flow-step .step-number {
+                background: #333 !important;
+                color: white !important;
+            }
+            .flow-step.end {
+                background: #333 !important;
+                color: white !important;
+            }
+            .flow-step.end .step-label,
+            .flow-step.end .step-desc {
+                color: white !important;
+            }
+            .form-control {
+                border-color: #ccc !important;
+                background: #f9f9f9 !important;
+            }
+            .btn-submit {
+                background: #333 !important;
+                color: white !important;
+            }
+            .struktur-level {
+                border-left-color: #333 !important;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            .struktur-registrasi {
+                background: #333 !important;
+                color: white !important;
+            }
+            .struktur-registrasi p {
+                color: #eee !important;
+            }
+            .struktur-registrasi .motto {
+                color: var(--gold) !important;
+            }
+            .struktur-bidang .bidang-row .bidang-nama .nama-item {
+                background: #eee !important;
+            }
+            .schedule-item.sholat {
+                border-left-color: #2E7D32 !important;
+            }
+            .schedule-item.sholat .time {
+                color: #2E7D32 !important;
+            }
+            .schedule-item.weekend {
+                border-left-color: #E67E22 !important;
+            }
+            .schedule-item.weekend .time {
+                color: #E67E22 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    /* NAVIGASI */
+    <!-- ============================================================ -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-text">
+                <i class="fas fa-leaf"></i>
+                Yayasan <span class="highlight">Rumah Sehat</span> <span class="gold">Harapan</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#visi-misi">Visi Misi</a></li>
+                <li><a href="#program">Program</a></li>
+                <li><a href="#rehab">Rehab</a></li>
+                <li><a href="#sdm">SDM</a></li>
+                <li><a href="#mitra">Mitra</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#biaya">Biaya</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+                <li><a href="#daily-schedule">Jadwal</a></li>
+                <li><a href="#alur-layanan">Alur</a></li>
+                <li><a href="#struktur">Struktur</a></li>
+                <li><a href="#pendaftaran">Daftar</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('open');
+        }
+
+        function downloadPDF() {
+            const btn = document.querySelector('.btn-pdf');
+            btn.classList.add('loading');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+            const element = document.getElementById('contentToPDF');
+
+            const opt = {
+                margin: [0.4, 0.4, 0.4, 0.4],
+                filename: 'Company_Profile_Yayasan_Rumah_Sehat_Harapan_2026.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, logging: false, letterRendering: true },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            html2pdf().set(opt).from(element).save().then(function() {
+                btn.classList.remove('loading');
+                btn.innerHTML = '<i class="fas fa-file-pdf"></i> PDF';
+            });
+        }
+
+        function printPage() {
+            window.print();
+        }
+    </script>
+
+    <!-- ============================================================ -->
+    <!-- TOMBOL DOWNLOAD PDF & PRINT -->
+    <!-- ============================================================ -->
+    <div class="pdf-toolbar">
+        <button class="btn-pdf" onclick="downloadPDF()">
+            <i class="fas fa-file-pdf"></i> PDF
+        </button>
+        <button class="btn-print" onclick="printPage()">
+            <i class="fas fa-print"></i> Print
+        </button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- KONTEN UNTUK PDF -->
+    <!-- ============================================================ -->
+    <div id="contentToPDF">
+
+        <!-- ============================================================ -->
+        <!-- HERO TANPA MAP -->
+        <!-- ============================================================ -->
+        <header class="hero">
+            <div class="logo-overlay" id="logoOverlay">
+                <i class="fas fa-leaf placeholder-icon"></i>
+            </div>
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="badge-hero">
+                            <i class="fas fa-check-circle" style="margin-right:6px;"></i> Terdaftar Resmi
+                        </div>
+                        <div class="logo-hero">
+                            <i class="fas fa-leaf"></i>
+                            Yayasan <span class="highlight">Rumah Sehat</span> <span class="highlight">Harapan</span>
+                        </div>
+                        <p>Wadah sosial yang didirikan oleh mantan pecandu narkoba untuk menyelamatkan generasi bangsa dari bahaya narkoba.</p>
+                        <div class="hero-stats">
+                            <div class="stat"><h3>2019</h3><p>Tahun Berdiri</p></div>
+                            <div class="stat"><h3>BNN</h3><p>Mitra Rehabilitasi</p></div>
+                            <div class="stat"><h3>Aftercare</h3><p>Pendampingan</p></div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="icon-box">
+                            <div class="logo-hero" style="font-size:1.2rem; justify-content:center; flex-wrap:wrap;">
+                                <i class="fas fa-hand-holding-heart"></i>
+                                <span style="display:block; width:100%; font-size:1rem; margin-top:4px;">Aftercare Sumut</span>
+                            </div>
+                            <p style="margin-top:6px; font-size:0.8rem;">Jl. Dahlia No. 33, Kel. Pahlawan, Kec. Binjai Utara, Kota Binjai, Sumatera Utara</p>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/aftercaresumut" target="_blank" title="Facebook"><i class="fab fa-facebook" style="color:#1877F2;"></i></a>
+                                <a href="https://www.instagram.com/aftercarerehab?igsh=anpkeWk0dmMzN3lj" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E4405F;"></i></a>
+                                <a href="mailto:yayasanaftercare@gmail.com" title="Email"><i class="fas fa-envelope" style="color:#EA4335;"></i></a>
+                                <a href="https://wa.me/6282166964850" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============================================================ -->
+        <!-- DARURAT NARKOBA -->
+        <!-- ============================================================ -->
+        <section id="darurat-narkoba" class="bg-soft">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:24px;">
+                    <span class="section-badge gold" style="background:#C0392B; color:white;">Darurat Narkoba</span>
+                    <h2 class="section-title">Situasi Darurat Narkoba</h2>
+                    <p class="section-subtitle mx-auto">Indonesia saat ini berada dalam kondisi darurat narkotika yang multidimensi, mencakup aspek hukum, sosial, ekonomi, hingga kesehatan.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box danger"><div class="number">4,15 Juta</div><div class="label">Pengguna Narkoba di Indonesia</div></div>
+                    <div class="stat-box danger"><div class="number">2,11%</div><div class="label">Prevalensi Nasional</div></div>
+                    <div class="stat-box warning"><div class="number">1,5 Juta</div><div class="label">Pengguna Narkoba di Sumut</div></div>
+                    <div class="stat-box warning"><div class="number">10%</div><div class="label">Prevalensi Pengguna di Sumut</div></div>
+                    <div class="stat-box success"><div class="number">3.865</div><div class="label">Kasus Narkoba di Sumut (Jan-Jun 2026)</div></div>
+                    <div class="stat-box success"><div class="number">4.628</div><div class="label">Tersangka Kasus Narkoba di Sumut</div></div>
+                </div>
+
+                <div class="diagram-container">
+                    <h4>Prevalensi Pengguna Narkoba (Jan-Jun 2026)</h4>
+                    <div class="diagram-bar"><span class="label-bar">Sumut</span><div class="bar-track"><div class="bar-fill danger" style="width:100%;">10%</div></div><span class="bar-value">10%</span></div>
+                    <div class="diagram-bar"><span class="label-bar">Nasional</span><div class="bar-track"><div class="bar-fill warning" style="width:21.1%;">2,11%</div></div><span class="bar-value">2,11%</span></div>
+                    <div class="diagram-bar"><span class="label-bar">Sumsel</span><div class="bar-track"><div class="bar-fill success" style="width:50%;">5%</div></div><span class="bar-value">5%</span></div>
+                    <div class="diagram-bar"><span class="label-bar">DKI Jakarta</span><div class="bar-track"><div class="bar-fill info" style="width:33%;">3,3%</div></div><span class="bar-value">3,3%</span></div>
+                    <div class="diagram-legend">
+                        <span class="legend-item"><span class="color-box danger"></span> Sumut (10%)</span>
+                        <span class="legend-item"><span class="color-box warning"></span> Nasional (2,11%)</span>
+                        <span class="legend-item"><span class="color-box success"></span> Sumsel (5%)</span>
+                        <span class="legend-item"><span class="color-box info"></span> DKI Jakarta (3,3%)</span>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top:16px; background:rgba(192,57,43,0.04); border-left:4px solid #C0392B;">
+                    <p style="font-size:0.85rem; text-align:center;">
+                        <i class="fas fa-exclamation-triangle" style="color:#C0392B; margin-right:8px;"></i>
+                        Pada periode Januari-Juni 2026, Polda Sumatera Utara menangani <strong>3.865 kasus</strong> narkotika dengan <strong>4.628 tersangka</strong> dan menyita barang bukti mencapai sekitar <strong>5,3 ton</strong> serta 93.990 mililiter dalam bentuk cair, terdiri dari 948 kg sabu, 685 kg ganja, 124.277 butir ekstasi, dan berbagai jenis narkotika lainnya.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- LATAR BELAKANG -->
+        <!-- ============================================================ -->
+        <section id="latar-belakang" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold">Tentang Kami</span>
+                    <div class="logo-text" style="justify-content:center; font-size:1.4rem; margin-bottom:6px;">
+                        <i class="fas fa-leaf"></i>
+                        Yayasan <span class="highlight">Rumah Sehat</span> <span class="gold">Harapan</span>
+                    </div>
+                    <h2 class="section-title">Latar Belakang</h2>
+                </div>
+                <div class="card" style="max-width:100%; margin:0 auto;">
+                    <p style="font-size:0.95rem; line-height:1.8;">
+                        After Care adalah wadah sosial yang didirikan oleh mantan pecandu narkoba yang pernah menjalani proses rehabilitasi di BNN Lido Bogor dan BNN Loka Batam serta lembaga rehabilitasi di seluruh wilayah NKRI. Seiring dengan berjalannya waktu timbulah pemikiran untuk mendirikan sebuah Yayasan pada tahun 2019 dengan nama <strong>"YAYASAN RUMAH SEHAT HARAPAN"</strong>.
+                        <br><br>
+                        Wadah ini adalah kumpulan para mantan pecandu yang telah selesai menjalani program rehabilitasi.
+                        <br><br>
+                        Wadah ini bertujuan untuk memberikan lingkungan yang aman serta menjaga recovery dan pemulihan para pecandu usai mengikuti rehabilitasi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- VISI & MISI -->
+        <!-- ============================================================ -->
+        <section id="visi-misi" class="bg-soft">
+            <div class="container">
+                <div class="visi-misi-grid">
+                    <div class="visi-card">
+                        <i class="fas fa-eye"></i>
+                        <h3>Visi</h3>
+                        <p>Melakukan penyelamatan dan perlindungan korban narkoba dari <strong>abuse of public power</strong> dan melakukan kegiatan-kegiatan preventif yang melibatkan partisipasi masyarakat secara luas.</p>
+                    </div>
+                    <div>
+                        <span class="section-badge">Misi Kami</span>
+                        <h2 class="section-title">5 Pilar Perjuangan</h2>
+                        <ul class="misi-list">
+                            <li><i class="fas fa-users"></i> Menggerakkan kepedulian dan partisipasi masyarakat atas bencana yang menimpa bangsa ini yang ditandakan oleh narkoba.</li>
+                            <li><i class="fas fa-comments"></i> Membangun opini dan tindakan tindakan yang tepat dalam penanganan korban narkoba.</li>
+                            <li><i class="fas fa-shield-alt"></i> Melakukan upaya upaya yang bertujuan mencapai melawan peredaran narkoba dan jatuhnya korban baru.</li>
+                            <li><i class="fas fa-info-circle"></i> Mengudahi potensi informasi yang berasal dari korban narkoba dan keluarga mengenai modus operandi dan setik betik narkoba.</li>
+                            <li><i class="fas fa-heart"></i> Merupakan gerakan yang bertujuan memberikan perlindungan dan penyelamatan terhadap korban narkoba.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TUJUAN -->
+        <!-- ============================================================ -->
+        <section id="tujuan" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold">Tujuan</span>
+                    <h2 class="section-title">Apa yang Kami Perjuangkan</h2>
+                </div>
+                <div class="card" style="max-width:100%; margin:0 auto; text-align:center;">
+                    <p style="font-size:0.95rem; line-height:1.8;">
+                        1. Menyelamatkan anak bangsa dari jeratan narkoba melalui upaya pencegahan dan rehabilitasi.
+                        <br><br>
+                        2. Meningkatkan kepedulian dan kesadaran masyarakat untuk berperan aktif dalam memerangi peredaran narkoba.
+                        <br><br>
+                        3. Mengubah opini publik yang menyudutkan korban narkoba dan keluarganya, serta memberikan pemahaman yang lebih humanis dan solutif.
+                        <br><br>
+                        4. Melindungi dan menyelamatkan korban narkoba dari perlakuan yang tidak adil serta memberikan pendampingan hukum dan sosial.
+                        <br><br>
+                        5. Memberdayakan mantan pecandu agar dapat kembali berfungsi secara produktif dalam masyarakat melalui program aftercare dan pelatihan keterampilan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- PROGRAM UNGGULAN -->
+        <!-- ============================================================ -->
+        <section id="program" class="bg-soft">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge">Program</span>
+                    <h2 class="section-title">Layanan Unggulan</h2>
+                    <p class="section-subtitle mx-auto">Pendampingan holistik dari hulu hingga hilir.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-hospital"></i></div><h4>Rehabilitasi Rawat Inap</h4><p>Program intensif 3–6 bulan dengan pendampingan 24 jam di fasilitas yayasan.</p><span class="capacity-badge"><i class="fas fa-users"></i> Kapasitas 20 Klien</span></div>
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-walking"></i></div><h4>Rehabilitasi Rawat Jalan</h4><p>Terapi rutin tanpa menginap, cocok untuk ketergantungan ringan–sedang.</p></div>
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-hands-helping"></i></div><h4>Aftercare Recovery</h4><p>Pendampingan pasca-rehabilitasi agar mantan pecandu tetap pulih dan produktif.</p></div>
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-chalkboard-teacher"></i></div><h4>Konseling &amp; Terapi</h4><p>Layanan konseling individu, keluarga, dan terapi kelompok berbasis bukti.</p></div>
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-shield-virus"></i></div><h4>Pencegahan (Preventif)</h4><p>Sosialisasi ke sekolah, kampus, dan komunitas untuk cegah korban baru.</p></div>
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-users"></i></div><h4>Kelompok Dukungan Sebaya</h4><p>Komunitas mantan pecandu yang saling menguatkan dan berbagi pengalaman.</p></div>
+                    <div class="card program-card"><div class="icon-box"><i class="fas fa-building"></i></div><h4>In House Training</h4><p>Pelatihan dan pendampingan bagi lembaga/instansi di tempat mereka.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- REHABILITASI RAWAT INAP & RAWAT JALAN -->
+        <!-- ============================================================ -->
+        <section id="rehab" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold">Layanan Rehabilitasi</span>
+                    <h2 class="section-title">Pilihan Program Pemulihan</h2>
+                    <p class="section-subtitle mx-auto">Sesuaikan dengan kebutuhan dan kondisi Anda.</p>
+                </div>
+                <div class="rehab-tabs">
+                    <div class="card rehab-card">
+                        <span class="label"><i class="fas fa-bed"></i> Rawat Inap</span>
+                        <h3>Pemulihan Intensif</h3>
+                        <p>Untuk pengguna dengan ketergantungan berat atau membutuhkan detoksifikasi terkontrol.</p>
+                        <span class="capacity-badge" style="margin-bottom:8px;"><i class="fas fa-users"></i> Kapasitas 20 Klien</span>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Durasi 3–6 bulan</li>
+                            <li><i class="fas fa-check-circle"></i> Pendampingan 24 jam</li>
+                            <li><i class="fas fa-check-circle"></i> Detoksifikasi medis</li>
+                            <li><i class="fas fa-check-circle"></i> Terapi individual &amp; kelompok</li>
+                            <li><i class="fas fa-check-circle"></i> Pelatihan vokasional</li>
+                            <li><i class="fas fa-check-circle"></i> Fasilitas kamar &amp; konsumsi</li>
+                        </ul>
+                        <div class="price-tag">Rp 3.000.000 / Bulan</div>
+                    </div>
+                    <div class="card rehab-card" style="border-left-color:var(--gold);">
+                        <span class="label" style="background:var(--gold);"><i class="fas fa-walking"></i> Rawat Jalan</span>
+                        <h3>Fleksibel &amp; Terjangkau</h3>
+                        <p>Untuk ketergantungan ringan–sedang atau lulusan rawat inap yang butuh pendampingan lanjutan.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Durasi 3–6 bulan</li>
+                            <li><i class="fas fa-check-circle"></i> Jadwal fleksibel (2–3x/minggu)</li>
+                            <li><i class="fas fa-check-circle"></i> Konseling individual</li>
+                            <li><i class="fas fa-check-circle"></i> Terapi kelompok</li>
+                            <li><i class="fas fa-check-circle"></i> Psikoedukasi keluarga</li>
+                            <li><i class="fas fa-check-circle"></i> Pemantauan berkala</li>
+                        </ul>
+                        <div class="price-tag" style="background:var(--gold); color:var(--primary-dark);">Rp 1.400.000 / Bulan</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- PENDEKATAN HOLISTIK & SYARAT MASUK -->
+        <!-- ============================================================ -->
+        <section id="holistik" class="bg-soft">
+            <div class="container">
+                <div class="grid-2">
+                    <div>
+                        <span class="section-badge">Pendekatan</span>
+                        <h2 class="section-title">Holistik &amp; Menyeluruh</h2>
+                        <p style="margin-bottom:14px; font-size:0.9rem;">Yayasan Rumah Sehat Harapan menerapkan pendekatan <strong>holistik</strong> dalam setiap program pemulihan. Pendekatan ini memandang bahwa pemulihan dari ketergantungan narkoba tidak hanya menyangkut aspek fisik semata, tetapi mencakup seluruh dimensi kehidupan klien secara utuh.</p>
+                        <ul style="list-style:none;">
+                            <li style="padding:6px 0; display:flex; align-items:center; gap:10px; font-size:0.85rem;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> <strong>Aspek Fisik</strong> - Detoksifikasi, pemulihan kesehatan, pola hidup sehat</li>
+                            <li style="padding:6px 0; display:flex; align-items:center; gap:10px; font-size:0.85rem;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> <strong>Aspek Psikologis</strong> - Konseling, terapi kognitif perilaku, penanganan trauma</li>
+                            <li style="padding:6px 0; display:flex; align-items:center; gap:10px; font-size:0.85rem;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> <strong>Aspek Sosial</strong> - Pemulihan relasi keluarga, reintegrasi masyarakat</li>
+                            <li style="padding:6px 0; display:flex; align-items:center; gap:10px; font-size:0.85rem;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> <strong>Aspek Spiritual</strong> - Pembinaan nilai-nilai kehidupan dan penguatan mental</li>
+                            <li style="padding:6px 0; display:flex; align-items:center; gap:10px; font-size:0.85rem;"><i class="fas fa-check-circle" style="color:var(--primary);"></i> <strong>Aspek Vokasional</strong> - Pelatihan keterampilan kerja untuk kemandirian ekonomi</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="section-badge gold">Syarat Masuk</span>
+                        <h2 class="section-title">Persyaratan Rehabilitasi</h2>
+                        <div style="background:var(--bg-card); border-radius:var(--radius-sm); padding:16px 18px; box-shadow:var(--shadow-sm);">
+                            <p style="font-weight:600; color:var(--primary-dark); font-size:0.9rem;"><i class="fas fa-file-alt" style="margin-right:8px;"></i> Persyaratan Umum</p>
+                            <ul style="list-style:none; margin-top:6px; font-size:0.85rem;">
+                                <li style="padding:3px 0;">✓ Penyalahguna narkoba yang membutuhkan pemulihan</li>
+                                <li style="padding:3px 0;">✓ Bersedia mengikuti seluruh rangkaian program</li>
+                                <li style="padding:3px 0;">✓ Dalam keadaan sadar saat pendaftaran awal</li>
+                                <li style="padding:3px 0;">✓ Tidak memiliki gangguan jiwa berat</li>
+                            </ul>
+                            <p style="font-weight:600; color:var(--primary-dark); margin-top:10px; font-size:0.9rem;"><i class="fas fa-folder-open" style="margin-right:8px;"></i> Persyaratan Administrasi</p>
+                            <ul style="list-style:none; margin-top:6px; font-size:0.85rem;">
+                                <li style="padding:3px 0;">✓ Mengisi formulir pendaftaran</li>
+                                <li style="padding:3px 0;">✓ Fotokopi KTP &amp; Kartu Keluarga</li>
+                                <li style="padding:3px 0;">✓ Pas foto 3x4 (2 lembar)</li>
+                                <li style="padding:3px 0;">✓ Surat rujukan (jika ada)</li>
+                                <li style="padding:3px 0;">✓ Surat keterangan sehat dari dokter</li>
+                                <li style="padding:3px 0;">✓ Surat pernyataan kesediaan dari klien &amp; keluarga</li>
+                            </ul>
+                            <p style="font-size:0.8rem; color:var(--text-gray); margin-top:6px;"><i class="fas fa-info-circle"></i> Syarat khusus untuk rawat inap dan rawat jalan tersedia di profil lengkap.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SDM -->
+        <!-- ============================================================ -->
+        <section id="sdm" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge">SDM Unggul</span>
+                    <h2 class="section-title">Tenaga Ahli Bersertifikat</h2>
+                    <p class="section-subtitle mx-auto">Didukung oleh konselor dengan sertifikasi nasional maupun internasional.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card sdm-item"><i class="fas fa-user-md" style="font-size:2rem; color:var(--primary);"></i><h4>Konselor Adiksi</h4><div class="konselor-name">Aka Dedyanta</div><p style="font-size:0.8rem;">Telah mengikuti pelatihan UTC</p><p style="font-size:0.75rem; margin-top:4px; color:var(--text-gray);">Anggota ISSUP</p></div>
+                    <div class="card sdm-item"><i class="fas fa-user-md" style="font-size:2rem; color:var(--primary);"></i><h4>Konselor Adiksi</h4><div class="konselor-name">Handoko</div><p style="font-size:0.8rem;">Telah mengikuti pelatihan UTC</p><p style="font-size:0.75rem; margin-top:4px; color:var(--text-gray);">Anggota ISSUP</p></div>
+                    <div class="card sdm-item"><i class="fas fa-user-md" style="font-size:2rem; color:var(--primary);"></i><h4>Konselor Adiksi</h4><div class="konselor-name">Khairul Hafizin</div><p style="font-size:0.8rem;">Bersertifikat BNSP &amp; ICAP I</p><div class="sertifikasi-list"><span class="badge-sertif"><i class="fas fa-certificate"></i> Nasional - BNSP</span><span class="badge-sertif international"><i class="fas fa-globe"></i> Internasional - ICAP I</span></div><p style="font-size:0.7rem; margin-top:4px; color:var(--text-gray);">ICAP I dikeluarkan oleh GCCC (Global Credentialing and Certification Center)</p><div class="sertifikasi-keterangan"><i class="fas fa-info-circle"></i> Sertifikasi BNSP diselenggarakan oleh LSP BNN RI</div><p style="font-size:0.75rem; margin-top:4px; color:var(--text-gray);">Telah mengikuti pelatihan UTC &amp; anggota ISSUP</p></div>
+                    <div class="card sdm-item"><i class="fas fa-certificate" style="font-size:2rem; color:var(--primary);"></i><h4>Sertifikasi Internasional</h4><p style="font-size:0.8rem;">ICAP</p><span class="badge-sertif international"><i class="fas fa-globe"></i> Global Credentialing and Certification Center</span><p style="font-size:0.7rem; margin-top:6px; color:var(--text-gray);">Pusat Kredensial dan Sertifikasi Global</p></div>
+                </div>
+                <p class="text-center" style="margin-top:16px; font-size:0.85rem; color:var(--text-gray);"><i class="fas fa-check-circle" style="color:var(--primary);"></i> Seluruh tenaga ahli kami mengikuti pelatihan lanjutan secara berkala.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- MITRA KERJA - TERINTEGRASI DENGAN PEMERINTAH KOTA BINJAI -->
+        <!-- ============================================================ -->
+        <section id="mitra" class="bg-soft">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold">Mitra Kerja</span>
+                    <h2 class="section-title">Jaringan Kolaborasi</h2>
+                    <p class="section-subtitle mx-auto">Bekerja sama dengan Pemerintah Kota Binjai dan berbagai instansi terkait.</p>
+                </div>
+                <div class="mitra-grid">
+                    <a href="#" class="mitra-item"><i class="fas fa-landmark"></i><h4>Pemerintah Kota Binjai</h4><p>Pemko Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-hospital"></i><h4>Dinas Kesehatan Kota Binjai</h4><p>Dinkes Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-university"></i><h4>Dinas Sosial Kota Binjai</h4><p>Dinsos Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-shield-alt"></i><h4>Polres Binjai</h4><p>Kepolisian Resort Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-building"></i><h4>BNNK Binjai</h4><p>Badan Narkotika Nasional Kota Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-gavel"></i><h4>Kejaksaan Negeri Binjai</h4><p>Kejari Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-school"></i><h4>Dinas Pendidikan Kota Binjai</h4><p>Disdik Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-hand-holding-heart"></i><h4>Puskesmas &amp; Rumah Sakit</h4><p>Fasilitas Kesehatan Binjai</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-users"></i><h4>Lurah &amp; Camat</h4><p>Pemerintah Kelurahan &amp; Kecamatan</p></a>
+                    <a href="#" class="mitra-item"><i class="fas fa-church"></i><h4>MUI &amp; Lembaga Keagamaan</h4><p>Pembinaan Spiritual</p></a>
+                </div>
+                <p style="font-size:0.8rem; color:var(--text-gray); text-align:center; margin-top:16px;">
+                    <i class="fas fa-handshake" style="color:var(--gold);"></i> Sinergi dengan Pemerintah Kota Binjai dalam upaya pencegahan dan penanggulangan narkoba.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- PENCAPAIAN -->
+        <!-- ============================================================ -->
+        <section id="pencapaian" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge">Pencapaian</span>
+                    <h2 class="section-title">Yang Telah Kami Raih</h2>
+                    <p class="section-subtitle mx-auto">Komitmen kami diakui oleh berbagai pihak.</p>
+                </div>
+                <div class="achievement-grid">
+                    <div class="card achievement-item"><div class="icon-big"><i class="fas fa-certificate"></i></div><h4>Terdaftar Resmi</h4><p>Kemenkumham &amp; Dinsos Binjai</p></div>
+                    <div class="card achievement-item"><div class="icon-big"><i class="fas fa-handshake"></i></div><h4>Mitra Strategis</h4><p>BNN &amp; Pemerintah Kota Binjai</p></div>
+                    <div class="card achievement-item"><div class="icon-big"><i class="fas fa-users"></i></div><h4>Kapasitas 20 Klien</h4><p>Fasilitas Rawat Inap</p></div>
+                    <div class="card achievement-item"><div class="icon-big"><i class="fas fa-star"></i></div><h4>SDM Bersertifikat</h4><p>Nasional &amp; Internasional</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- TESTIMONI -->
+        <!-- ============================================================ -->
+        <section id="testimoni" class="bg-soft">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold">Testimoni</span>
+                    <h2 class="section-title">Kata Mereka</h2>
+                    <p class="section-subtitle mx-auto">Cerita nyata dari klien dan keluarga yang telah merasakan manfaat layanan kami.</p>
+                </div>
+                <div class="testimoni-grid">
+                    <div class="card testimoni-card"><div class="quote"><i class="fas fa-quote-left"></i></div><p style="font-size:0.9rem;">Saya benar-benar merasa diterima dan didukung di sini. Para konselor tidak hanya profesional, tapi juga sangat peduli. Saya sekarang sudah 2 tahun bersih dan bekerja kembali.</p><div class="author"><div class="avatar"><i class="fas fa-user"></i></div><div><div class="name">Andi S.</div><div class="role">Mantan Klien Rawat Inap</div></div></div></div>
+                    <div class="card testimoni-card"><div class="quote"><i class="fas fa-quote-left"></i></div><p style="font-size:0.9rem;">Anak saya pulih setelah menjalani program di sini. Kami sebagai keluarga juga mendapat pendampingan yang luar biasa. Terima kasih Yayasan Rumah Sehat Harapan.</p><div class="author"><div class="avatar"><i class="fas fa-user"></i></div><div><div class="name">Ibu Rita</div><div class="role">Orang Tua Klien</div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- DAILY SCHEDULE - DENGAN SHOLAT 5 WAKTU & WEEKEND -->
+        <!-- ============================================================ -->
+        <section id="daily-schedule" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold"><i class="fas fa-clock"></i> Jadwal Harian</span>
+                    <h2 class="section-title">Rutinitas Pemulihan</h2>
+                    <p class="section-subtitle mx-auto">Jadwal harian untuk klien rawat inap di Yayasan Rumah Sehat Harapan.</p>
+                </div>
+
+                <!-- Rawat Inap -->
+                <h3 style="color:var(--primary); margin-bottom:12px; font-size:1.1rem;">
+                    <i class="fas fa-bed" style="color:var(--gold);"></i> Rawat Inap (Senin – Jumat)
+                </h3>
+                <div class="schedule-grid">
+                    <div class="schedule-item sholat">
+                        <span class="time"><i class="fas fa-moon"></i> 04.30</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Subuh &amp; Dzikir</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time"><i class="fas fa-sun"></i> 05.30</span>
+                        <span class="activity"><i class="fas fa-bell"></i> Bangun &amp; Sholat/Meditasi</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">06.00</span>
+                        <span class="activity"><i class="fas fa-running"></i> Olahraga Pagi (Jogging/Senam)</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">07.00</span>
+                        <span class="activity"><i class="fas fa-utensils"></i> Sarapan</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">08.00</span>
+                        <span class="activity"><i class="fas fa-hand-holding-heart"></i> Konseling Individual / Terapi</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">10.00</span>
+                        <span class="activity"><i class="fas fa-users"></i> Terapi Kelompok</span>
+                    </div>
+                    <div class="schedule-item sholat">
+                        <span class="time"><i class="fas fa-sun"></i> 12.00</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Dzuhur</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">12.30</span>
+                        <span class="activity"><i class="fas fa-utensils"></i> Makan Siang &amp; Istirahat</span>
+                    </div>
+                    <div class="schedule-item sholat">
+                        <span class="time">15.00</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Ashar</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">15.30</span>
+                        <span class="activity"><i class="fas fa-book"></i> Psikoedukasi / Materi Pemulihan</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">17.00</span>
+                        <span class="activity"><i class="fas fa-mountain"></i> Kegiatan Rekreasi / Relaksasi</span>
+                    </div>
+                    <div class="schedule-item sholat">
+                        <span class="time">18.00</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Maghrib &amp; Tadarus</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">18.45</span>
+                        <span class="activity"><i class="fas fa-utensils"></i> Makan Malam</span>
+                    </div>
+                    <div class="schedule-item sholat">
+                        <span class="time">19.30</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Isya'</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">20.00</span>
+                        <span class="activity"><i class="fas fa-users"></i> Kelompok Dukungan Sebaya (Peer Support)</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">21.00</span>
+                        <span class="activity"><i class="fas fa-book-open"></i> Refleksi / Jurnal Pribadi</span>
+                    </div>
+                    <div class="schedule-item">
+                        <span class="time">22.00</span>
+                        <span class="activity"><i class="fas fa-moon"></i> Istirahat / Tidur</span>
+                    </div>
+                </div>
+
+                <!-- Weekend -->
+                <div class="weekend-header">
+                    <i class="fas fa-calendar-week"></i> Weekend (Sabtu &amp; Minggu)
+                </div>
+                <div class="schedule-grid">
+                    <div class="schedule-item weekend">
+                        <span class="time"><i class="fas fa-clock"></i> 05.30</span>
+                        <span class="activity"><i class="fas fa-bell"></i> Bangun &amp; Sholat/Meditasi</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">06.30</span>
+                        <span class="activity"><i class="fas fa-running"></i> Olahraga Santai / Jalan Pagi</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">07.30</span>
+                        <span class="activity"><i class="fas fa-utensils"></i> Sarapan Bersama</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">09.00</span>
+                        <span class="activity"><i class="fas fa-hand-holding-heart"></i> Konseling Keluarga (Jika ada kunjungan)</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">11.00</span>
+                        <span class="activity"><i class="fas fa-broom"></i> Kebersihan &amp; Kerapian Lingkungan</span>
+                    </div>
+                    <div class="schedule-item weekend sholat">
+                        <span class="time">12.00</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Dzuhur</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">12.30</span>
+                        <span class="activity"><i class="fas fa-utensils"></i> Makan Siang</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">14.00</span>
+                        <span class="activity"><i class="fas fa-gamepad"></i> Kegiatan Rekreasi / Hiburan (Film, Musik, Game)</span>
+                    </div>
+                    <div class="schedule-item weekend sholat">
+                        <span class="time">15.00</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Ashar</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">16.00</span>
+                        <span class="activity"><i class="fas fa-tree"></i> Jalan Santai / Kunjungan Keluarga (jadwal bergilir)</span>
+                    </div>
+                    <div class="schedule-item weekend sholat">
+                        <span class="time">18.00</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Maghrib &amp; Tadarus</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">18.45</span>
+                        <span class="activity"><i class="fas fa-utensils"></i> Makan Malam</span>
+                    </div>
+                    <div class="schedule-item weekend sholat">
+                        <span class="time">19.30</span>
+                        <span class="activity"><i class="fas fa-mosque"></i> Sholat Isya'</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">20.00</span>
+                        <span class="activity"><i class="fas fa-users"></i> Kelompok Dukungan / Sharing Santai</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">21.30</span>
+                        <span class="activity"><i class="fas fa-book-open"></i> Refleksi Pribadi / Menulis Jurnal</span>
+                    </div>
+                    <div class="schedule-item weekend">
+                        <span class="time">22.00</span>
+                        <span class="activity"><i class="fas fa-moon"></i> Istirahat / Tidur</span>
+                    </div>
+                </div>
+
+                <!-- Catatan -->
+                <div class="schedule-note">
+                    <i class="fas fa-info-circle"></i> Jadwal dapat disesuaikan dengan kondisi individu klien. Weekend lebih difokuskan pada pemulihan santai, kebersihan, dan kunjungan keluarga.
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FLOW CHART ALUR LAYANAN -->
+        <!-- ============================================================ -->
+        <section id="alur-layanan" class="bg-soft">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold"><i class="fas fa-sitemap"></i> Alur Layanan</span>
+                    <h2 class="section-title">Flow Chart Rehabilitasi</h2>
+                    <p class="section-subtitle mx-auto">Proses pendaftaran hingga pemulihan di Yayasan Rumah Sehat Harapan.</p>
+                </div>
+
+                <div class="flowchart">
+                    <!-- Step 1 -->
+                    <div class="flow-step">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Konsultasi &amp; Pendaftaran</span>
+                        <div class="step-desc">Klien atau keluarga menghubungi yayasan, konsultasi awal, dan mengisi formulir pendaftaran.</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+                    <!-- Step 2 -->
+                    <div class="flow-step">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Asesmen Awal</span>
+                        <div class="step-desc">Wawancara mendalam dengan konselor untuk mengetahui riwayat, tingkat ketergantungan, dan kebutuhan klien.</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+                    <!-- Step 3 - Cabang -->
+                    <div class="flow-step">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Penentuan Program</span>
+                        <div class="step-desc">Berdasarkan hasil asesmen, konselor merekomendasikan program rawat inap atau rawat jalan.</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+                    <!-- Branch -->
+                    <div class="flow-branch">
+                        <div class="flow-branch-row">
+                            <div class="flow-step alt">
+                                <span class="step-number">A</span>
+                                <span class="step-label">Rawat Inap</span>
+                                <div class="step-desc">Program intensif 3-6 bulan di fasilitas yayasan.</div>
+                            </div>
+                            <div class="flow-arrow-horizontal"><i class="fas fa-arrow-right"></i></div>
+                            <div class="flow-step alt">
+                                <span class="step-number">B</span>
+                                <span class="step-label">Rawat Jalan</span>
+                                <div class="step-desc">Terapi rutin tanpa menginap, jadwal fleksibel.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+                    <!-- Step 4 -->
+                    <div class="flow-step">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Pelaksanaan Program</span>
+                        <div class="step-desc">Klien menjalani rangkaian terapi, konseling, dan kegiatan pemulihan sesuai program yang dipilih.</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+                    <!-- Step 5 -->
+                    <div class="flow-step">
+                        <span class="step-number">5</span>
+                        <span class="step-label">Evaluasi Berkala</span>
+                        <div class="step-desc">Konselor memantau perkembangan klien secara rutin dan menyesuaikan rencana pemulihan jika diperlukan.</div>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-down"></i></div>
+
+                    <!-- Step 6 -->
+                    <div class="flow-step end">
+                        <span class="step-number">6</span>
+                        <span class="step-label">Aftercare &amp; Pemulihan Berkelanjutan</span>
+                        <div class="step-desc">Pendampingan pasca-rehabilitasi, dukungan sebaya, dan reintegrasi masyarakat.</div>
+                    </div>
+                </div>
+
+                <div class="schedule-note" style="margin-top:12px;">
+                    <i class="fas fa-info-circle"></i> Alur dapat disesuaikan dengan kebutuhan khusus klien. Setiap klien mendapatkan pendampingan personal dari konselor.
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- STRUKTUR ORGANISASI -->
+        <!-- ============================================================ -->
+        <section id="struktur" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold"><i class="fas fa-sitemap"></i> Struktur Organisasi</span>
+                    <h2 class="section-title">Pengurus Yayasan</h2>
+                    <p class="section-subtitle mx-auto">Struktur kepengurusan Yayasan Rumah Sehat Harapan.</p>
+                </div>
+
+                <div class="struktur-container">
+
+                    <!-- Pembina -->
+                    <div class="struktur-level">
+                        <div class="level-title"><i class="fas fa-user-tie"></i> Pembina</div>
+                        <div class="level-items">
+                            <span class="item">Risad Hutagalung</span>
+                            <span class="item">Hj. Nurmala Zein SRG</span>
+                        </div>
+                    </div>
+
+                    <!-- Pengawas -->
+                    <div class="struktur-level">
+                        <div class="level-title"><i class="fas fa-eye"></i> Pengawas</div>
+                        <div class="level-items">
+                            <span class="item">Leo Pramana</span>
+                        </div>
+                    </div>
+
+                    <!-- Konsultan -->
+                    <div class="struktur-level">
+                        <div class="level-title"><i class="fas fa-user-md"></i> Konsultan</div>
+                        <div class="level-items">
+                            <span class="item">Dr. Arifin Saleh SRG, MSP</span>
+                            <span class="item">dr. Nurfitri Amalia</span>
+                        </div>
+                    </div>
+
+                    <!-- Pengurus Inti -->
+                    <div class="struktur-level" style="border-left-color: var(--gold);">
+                        <div class="level-title"><i class="fas fa-users"></i> Pengurus Inti</div>
+                        <div class="level-items">
+                            <span class="item"><strong>Ketua</strong> <span class="jabatan">- Aka Dedyanta</span></span>
+                            <span class="item"><strong>Sekretaris</strong> <span class="jabatan">- M. Isya Abdullah</span></span>
+                            <span class="item"><strong>Bendahara</strong> <span class="jabatan">- Zulkifli</span></span>
+                            <span class="item"><strong>Program Manager</strong> <span class="jabatan">- Aka Dedyanta</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Bidang Operasional -->
+                    <div class="struktur-level" style="border-left-color: var(--secondary);">
+                        <div class="level-title"><i class="fas fa-briefcase"></i> Bidang Operasional</div>
+                        <div class="struktur-bidang">
+
+                            <div class="bidang-row">
+                                <span class="bidang-label">Bidang HUMAS</span>
+                                <span class="bidang-nama">
+                                    <span class="nama-item">Zulhendra</span>
+                                    <span class="nama-item">Yudha Sagala</span>
+                                    <span class="nama-item">Fery Sangap T</span>
+                                    <span class="nama-item">M. Syukron</span>
+                                </span>
+                            </div>
+
+                            <div class="bidang-row">
+                                <span class="bidang-label">Bidang KONSELOR</span>
+                                <span class="bidang-nama">
+                                    <span class="nama-item">Aka Dedyanta</span>
+                                    <span class="nama-item">Handoko</span>
+                                    <span class="nama-item">Khairul Hafizin, S.Mn, ICAP I</span>
+                                </span>
+                            </div>
+
+                            <div class="bidang-row">
+                                <span class="bidang-label">Bidang Asisten Konselor</span>
+                                <span class="bidang-nama">
+                                    <span class="nama-item">Johannes</span>
+                                </span>
+                            </div>
+
+                            <div class="bidang-row">
+                                <span class="bidang-label">Bidang Administrasi</span>
+                                <span class="bidang-nama">
+                                    <span class="nama-item">Muhidinsyah Daulay</span>
+                                </span>
+                            </div>
+
+                            <div class="bidang-row">
+                                <span class="bidang-label">Bidang Keamanan</span>
+                                <span class="bidang-nama">
+                                    <span class="nama-item">Ridho Rizky Daulay</span>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Keterangan -->
+                    <div class="struktur-keterangan">
+                        <h4><i class="fas fa-info-circle" style="color:var(--gold);"></i> Keterangan Struktur Organisasi</h4>
+                        <ul>
+                            <li><i class="fas fa-arrow-right"></i> Garis komando menunjukkan alur koordinasi dan tanggung jawab dari Pembina, Pengawas, dan Konsultan kepada Pengurus, kemudian diteruskan ke seluruh bidang operasional.</li>
+                            <li><i class="fas fa-arrow-right"></i> <strong>Garis Komando (Hierarki)</strong></li>
+                            <li><i class="fas fa-arrow-right"></i> <strong>Struktur Inti</strong> (Pembina/Pengawas)</li>
+                            <li><i class="fas fa-arrow-right"></i> <strong>Bidang Operasional</strong> &amp; Pendukung</li>
+                        </ul>
+                    </div>
+
+                    <!-- Registrasi & Motto -->
+                    <div class="struktur-registrasi">
+                        <p><strong>YAYASAN RUMAH SEHAT HARAPAN</strong></p>
+                        <p>Terdaftar di Kemenkumham No. AHU-0006210.AH.01.12. Tahun 2020</p>
+                        <p>Terdaftar di Dinas Sosial Pemko Binjai Nomor: 480-2879/2020</p>
+                        <div class="motto">"Kami bukan hanya sembuh, kami pulih untuk membantu."</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- KATA PENUTUP -->
+        <!-- ============================================================ -->
+        <section id="penutup" class="bg-soft">
+            <div class="container">
+                <div class="penutup-section">
+                    <div class="penutup-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Kata Penutup</h3>
+                    <p>
+                        Yayasan Rumah Sehat Harapan hadir sebagai wujud nyata kepedulian dan semangat untuk memberikan harapan baru bagi mereka yang terjerat narkoba. Kami percaya bahwa setiap orang berhak mendapatkan kesempatan kedua untuk hidup yang lebih baik, sehat, dan bermakna.
+                        <br><br>
+                        Dengan pengalaman langsung dari para pendiri yang pernah melalui masa-masa sulit, kami memahami betul perjalanan pemulihan yang tidak mudah. Karena itu, kami berkomitmen untuk terus mendampingi, menguatkan, dan memberdayakan setiap individu yang datang kepada kami.
+                        <br><br>
+                        Kami mengajak seluruh elemen masyarakat, pemerintah, dan swasta untuk bergandengan tangan memutus mata rantai narkoba dan membangun generasi Indonesia yang sehat, produktif, dan bebas narkoba.
+                    </p>
+                    <div class="motto">"Kami bukan hanya sembuh, kami pulih untuk membantu."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- KUNJUNGI MEDIA SOSIAL -->
+        <!-- ============================================================ -->
+        <section id="kunjungi-media-sosial" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:24px;">
+                    <span class="section-badge gold">Kunjungi Media Sosial</span>
+                    <h2 class="section-title">Ikuti Kami</h2>
+                    <p class="section-subtitle mx-auto">Lihat dokumentasi kegiatan Yayasan Rumah Sehat Harapan melalui media sosial resmi kami.</p>
+                </div>
+                <div class="sosmed-section">
+                    <h3><i class="fas fa-camera"></i> Kunjungi Media Sosial Kami</h3>
+                    <p>Dapatkan informasi terbaru dan lihat dokumentasi kegiatan kami di akun resmi berikut.</p>
+                    <div class="sosmed-icons">
+                        <a href="https://www.facebook.com/aftercaresumut" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook" style="color:#1877F2;"></i>
+                            <span class="label">Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/aftercarerehab?igsh=anpkeWk0dmMzN3lj" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram" style="color:#E4405F;"></i>
+                            <span class="label">Instagram</span>
+                        </a>
+                        <a href="https://www.youtube.com/@aftercaresumut" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube" style="color:#FF0000;"></i>
+                            <span class="label">YouTube</span>
+                        </a>
+                        <a href="https://wa.me/6282166964850" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            <span class="label">WhatsApp</span>
+                        </a>
+                        <a href="mailto:yayasanaftercare@gmail.com" title="Email">
+                            <i class="fas fa-envelope" style="color:#EA4335;"></i>
+                            <span class="label">Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FAQ -->
+        <!-- ============================================================ -->
+        <section id="faq" class="bg-soft">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge">FAQ</span>
+                    <h2 class="section-title">Pertanyaan Umum</h2>
+                    <p class="section-subtitle mx-auto">Informasi yang sering ditanyakan seputar layanan kami.</p>
+                </div>
+                <div style="max-width:100%; margin:0 auto;">
+                    <div class="faq-item"><div class="question">Apakah layanan rehabilitasi gratis? <i class="fas fa-chevron-down"></i></div><div class="answer">Kami menyediakan layanan dengan biaya terjangkau. Untuk klien kurang mampu, tersedia skema subsidi silang dan dukungan BPJS/KIP.</div></div>
+                    <div class="faq-item"><div class="question">Berapa lama durasi program rehabilitasi? <i class="fas fa-chevron-down"></i></div><div class="answer">Durasi program umumnya 3–6 bulan, tergantung pada tingkat ketergantungan dan perkembangan klien.</div></div>
+                    <div class="faq-item"><div class="question">Apakah keluarga bisa terlibat dalam proses pemulihan? <i class="fas fa-chevron-down"></i></div><div class="answer">Ya, kami memiliki program psikoedukasi dan pendampingan keluarga sebagai bagian penting dari proses pemulihan.</div></div>
+                    <div class="faq-item"><div class="question">Apa saja sertifikasi yang dimiliki konselor di yayasan? <i class="fas fa-chevron-down"></i></div><div class="answer">Konselor kami telah mengikuti pelatihan UTC dan merupakan anggota ISSUP. Khairul Hafizin memiliki sertifikasi BNSP (Nasional) yang diselenggarakan oleh LSP BNN RI dan ICAP I (Internasional) yang dikeluarkan oleh GCCC (Global Credentialing and Certification Center).</div></div>
+                    <div class="faq-item"><div class="question">Berapa kapasitas klien rawat inap? <i class="fas fa-chevron-down"></i></div><div class="answer">Yayasan Rumah Sehat Harapan memiliki kapasitas <strong>20 klien rawat inap</strong> dengan fasilitas pendukung yang memadai untuk pemulihan optimal.</div></div>
+                    <div class="faq-item"><div class="question">Bagaimana situasi narkoba di Binjai dan Sumatera Utara? <i class="fas fa-chevron-down"></i></div><div class="answer">Pada periode Januari-Juni 2026, Polda Sumut menangani 3.865 kasus narkoba dengan 4.628 tersangka dan menyita 5,3 ton barang bukti. Kota Binjai juga menjadi wilayah rawan dengan beberapa pengungkapan kasus besar oleh Polres Binjai.</div></div>
+                    <div class="faq-item"><div class="question">Apa itu In House Training dan bagaimana cara mengaksesnya? <i class="fas fa-chevron-down"></i></div><div class="answer">In House Training adalah program pelatihan dan pendampingan yang kami bawa langsung ke tempat mitra. Anda dapat menghubungi kontak yayasan untuk konsultasi dan penyesuaian kebutuhan, termasuk biaya yang dapat disesuaikan dengan anggaran mitra.</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- LOKASI / MAP -->
+        <!-- ============================================================ -->
+        <section id="lokasi" class="bg-white">
+            <div class="container">
+                <div class="text-center" style="margin-bottom:28px;">
+                    <span class="section-badge gold">Lokasi Kami</span>
+                    <h2 class="section-title">Temukan Kami</h2>
+                    <p class="section-subtitle mx-auto" style="font-size:0.9rem;">
+                        <i class="fas fa-map-pin" style="color:var(--primary);"></i>
+                        Jl. Dahlia No. 33, Kel. Pahlawan, Kec. Binjai Utara, Kota Binjai, Sumatera Utara
+                    </p>
+                </div>
+                <div class="map-container">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.087876345678!2d98.45678901234567!3d3.6123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMzYnNDQuNSJOIDk4wrAyNyc0NC40IkU!5e0!3m2!1sid!2sid!4v1700000000000"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Peta Lokasi Yayasan Rumah Sehat Harapan">
+                </iframe>
+            </div>
+            <div class="contact-info">
+                <a href="https://maps.google.com/?q=Jl.+Dahlia+No.+33+Binjai" target="_blank" class="item" title="Buka di Google Maps">
+                    <i class="fas fa-map-pin" style="color:#4285F4;"></i>
+                    <span>Jl. Dahlia No. 33, Binjai</span>
+                </a>
+                <a href="https://wa.me/6282166964850" target="_blank" class="item" title="WhatsApp">
+                    <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                    <span>0821-6696-4850</span>
+                </a>
+                <a href="mailto:yayasanaftercare@gmail.com" class="item" title="Email">
+                    <i class="fas fa-envelope" style="color:#EA4335;"></i>
+                    <span>yayasanaftercare@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- RINCIAN BIAYA -->
+    <!-- ============================================================ -->
+    <section id="biaya" class="bg-soft">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:28px;">
+                <span class="section-badge">Biaya</span>
+                <h2 class="section-title">Rincian Biaya Rehabilitasi</h2>
+                <p class="section-subtitle mx-auto" style="font-size:0.9rem;">
+                    Biaya rehabilitasi <strong>Rp 3.000.000,- per bulan</strong> sudah termasuk inap, makan, dan layanan konseling.
+                </p>
+            </div>
+
+            <!-- Rawat Inap -->
+            <div style="margin-bottom:32px;">
+                <h3 style="color:var(--primary); margin-bottom:12px; font-size:1.1rem;">
+                    <i class="fas fa-bed" style="color:var(--gold);"></i> Rawat Inap
+                    <span class="capacity-badge" style="font-size:0.55rem; margin-left:8px;"><i class="fas fa-users"></i> Kapasitas 20 Klien</span>
+                </h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>No</th><th>Biaya</th><th style="text-align:right;">Per Bulan</th><th style="text-align:right;">Satuan</th><th>Keterangan</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td><strong>Makan</strong></td><td style="text-align:right;">Rp 1.500.000</td><td style="text-align:right;">Rp 50.000</td><td>Makan 3x Setiap</td></tr>
+                            <tr><td>2</td><td><strong>Inap</strong></td><td style="text-align:right;">Rp 1.000.000</td><td style="text-align:right;">Rp 33.000</td><td>Lain, Air, &amp; Penjagaan</td></tr>
+                            <tr><td>3</td><td><strong>Konseling</strong></td><td style="text-align:right;">Rp 300.000</td><td style="text-align:right;">Rp 50.000</td><td>Konseling &amp; Persuratan</td></tr>
+                            <tr><td>4</td><td><strong>Obat-obatan</strong></td><td style="text-align:right;">Rp 200.000</td><td style="text-align:right;">Rp 50.000</td><td>Vitamin, obat untuk demam &amp; Bu</td></tr>
+                            <tr class="total-row"><td colspan="2" style="text-align:right; font-weight:700;">Total Paket Utama</td><td style="text-align:right; font-weight:700;">Rp 3.000.000</td><td colspan="2"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="margin-top:12px;">
+                    <h4 style="color:var(--primary-dark); font-size:0.85rem;"><i class="fas fa-plus-circle" style="color:var(--gold);"></i> Belum Termasuk Deposit</h4>
+                    <div class="table-wrap" style="margin-top:6px;">
+                        <table>
+                            <thead><tr><th>No</th><th>Biaya</th><th style="text-align:right;">Per Bulan</th><th style="text-align:right;">Satuan</th><th>Keterangan</th></tr></thead>
+                            <tbody>
+                                <tr><td>1</td><td><strong>Laundry</strong></td><td style="text-align:right;">Rp 60.000</td><td style="text-align:right;">Rp 15.000</td><td>Laundry Per Minggu</td></tr>
+                                <tr><td>2</td><td><strong>Rokok</strong></td><td style="text-align:right;">Rp 180.000</td><td style="text-align:right;">Rp 6.000</td><td>Rokok 3 Etanap Per Hari</td></tr>
+                                <tr><td>3</td><td><strong>Snack</strong></td><td style="text-align:right;">Rp 200.000</td><td style="text-align:right;">Rp 50.000</td><td>Snack Mingguan</td></tr>
+                                <tr style="background:var(--bg-soft); font-weight:600;"><td colspan="2" style="text-align:right;">Total Tambahan</td><td style="text-align:right; color:var(--primary);">Rp 440.000</td><td colspan="2"></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.75rem; color:var(--text-gray); margin-top:6px;"><i class="fas fa-info-circle"></i> Biaya tambahan bersifat opsional. Tersedia skema subsidi silang bagi klien kurang mampu.</p>
+                </div>
+            </div>
+
+            <!-- Rawat Jalan -->
+            <div style="margin-bottom:32px;">
+                <h3 style="color:var(--primary); margin-bottom:12px; font-size:1.1rem;">
+                    <i class="fas fa-walking" style="color:var(--gold);"></i> Rawat Jalan
+                </h3>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>No</th><th>Jenis Biaya</th><th style="text-align:right;">Per Pertemuan</th><th style="text-align:right;">Per Bulan</th><th>Keterangan</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td><strong>Konseling Individual</strong></td><td style="text-align:right;">Rp 150.000</td><td style="text-align:right;">Rp 600.000</td><td>Sesi 60-90 menit</td></tr>
+                            <tr><td>2</td><td><strong>Terapi Kelompok</strong></td><td style="text-align:right;">Rp 75.000</td><td style="text-align:right;">Rp 300.000</td><td>Sesi kelompok 2x per bulan</td></tr>
+                            <tr><td>3</td><td><strong>Psikoedukasi Keluarga</strong></td><td style="text-align:right;">Rp 100.000</td><td style="text-align:right;">Rp 200.000</td><td>2x per bulan</td></tr>
+                            <tr><td>4</td><td><strong>Pemantauan &amp; Tes Urine</strong></td><td style="text-align:right;">Rp 50.000</td><td style="text-align:right;">Rp 200.000</td><td>4x per bulan</td></tr>
+                            <tr><td>5</td><td><strong>Konsultasi Daring</strong></td><td style="text-align:right;">Rp 50.000</td><td style="text-align:right;">Rp 100.000</td><td>2x per bulan</td></tr>
+                            <tr class="total-row"><td colspan="2" style="text-align:right; font-weight:700;">Total</td><td></td><td style="text-align:right; font-weight:700;">Rp 1.400.000</td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size:0.75rem; color:var(--text-gray); margin-top:6px;"><i class="fas fa-info-circle"></i> Biaya dapat bervariasi tergantung frekuensi pertemuan dan paket yang dipilih.</p>
+            </div>
+
+            <!-- In House Training -->
+            <div>
+                <h3 style="color:var(--primary); margin-bottom:12px; font-size:1.1rem;">
+                    <i class="fas fa-building" style="color:var(--gold);"></i> In House Training
+                </h3>
+                <div class="card" style="text-align:center; padding:20px;">
+                    <p style="font-size:0.95rem;">Biaya program In House Training <strong>dapat disesuaikan</strong> dengan kebutuhan dan kesepakatan bersama antara Yayasan Rumah Sehat Harapan dan mitra.</p>
+                    <p style="font-size:0.85rem; color:var(--text-gray); margin-top:6px;">Faktor yang menjadi pertimbangan: jumlah peserta, durasi program, kompleksitas materi, dan lokasi pelaksanaan.</p>
+                    <p style="font-size:0.85rem; color:var(--text-gray); margin-top:6px;">
+                        <i class="fas fa-phone" style="color:var(--primary);"></i> Untuk informasi lebih lanjut, silakan hubungi
+                        <a href="https://wa.me/6282166964850" target="_blank" style="color:var(--primary); font-weight:600; text-decoration:none;">0821-6696-4850</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FORM PENDAFTARAN -->
+    <!-- ============================================================ -->
+    <section id="pendaftaran" class="bg-white">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:28px;">
+                <span class="section-badge gold"><i class="fas fa-pen"></i> Pendaftaran</span>
+                <h2 class="section-title">Formulir Pendaftaran Klien</h2>
+                <p class="section-subtitle mx-auto">Isi data berikut untuk memulai proses rehabilitasi di Yayasan Rumah Sehat Harapan.</p>
+            </div>
+
+            <div class="card" style="max-width:100%; margin:0 auto;">
+                <form id="registrationForm" onsubmit="event.preventDefault(); alert('Terima kasih! Formulir pendaftaran telah dikirim. Kami akan segera menghubungi Anda.');">
+                    <div class="form-group">
+                        <label for="namaLengkap">Nama Lengkap <span class="required">*</span></label>
+                        <input type="text" id="namaLengkap" class="form-control" placeholder="Masukkan nama lengkap" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tempatLahir">Tempat Lahir <span class="required">*</span></label>
+                            <input type="text" id="tempatLahir" class="form-control" placeholder="Kota lahir" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="tanggalLahir">Tanggal Lahir <span class="required">*</span></label>
+                            <input type="date" id="tanggalLahir" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nik">NIK (Nomor Induk Kependudukan) <span class="required">*</span></label>
+                        <input type="text" id="nik" class="form-control" placeholder="16 digit NIK" maxlength="16" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="noHp">Nomor HP/WhatsApp <span class="required">*</span></label>
+                            <input type="tel" id="noHp" class="form-control" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="contoh@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alamat">Alamat Lengkap <span class="required">*</span></label>
+                        <textarea id="alamat" class="form-control" rows="2" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota" required></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="jenisKelamin">Jenis Kelamin <span class="required">*</span></label>
+                            <select id="jenisKelamin" class="form-control form-select" required>
+                                <option value="">Pilih</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="program">Program yang Diminati <span class="required">*</span></label>
+                            <select id="program" class="form-control form-select" required>
+                                <option value="">Pilih Program</option>
+                                <option value="Rawat Inap">Rawat Inap</option>
+                                <option value="Rawat Jalan">Rawat Jalan</option>
+                                <option value="Konsultasi Daring">Konsultasi Daring</option>
+                                <option value="In House Training">In House Training</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="keterangan">Keterangan Tambahan</label>
+                        <textarea id="keterangan" class="form-control" rows="2" placeholder="Informasi tambahan (riwayat, kebutuhan khusus, dll.)"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Daftar Sekarang
+                    </button>
+                    <div class="form-note">
+                        <i class="fas fa-lock"></i> Data Anda aman dan hanya digunakan untuk keperluan pendaftaran.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="brand">
+                <div class="logo-footer">
+                    <i class="fas fa-leaf"></i>
+                    Yayasan <span class="highlight">Rumah Sehat</span> <span class="highlight">Harapan</span>
+                </div>
+                <p>Jl. Dahlia No. 33, Kel. Pahlawan, Kec. Binjai Utara, Kota Binjai, Sumatera Utara</p>
+                <div class="contact-row">
+                    <a href="https://wa.me/6282166964850" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i> 0821-6696-4850</a>
+                    <a href="mailto:yayasanaftercare@gmail.com" title="Email"><i class="fas fa-envelope" style="color:#EA4335;"></i> yayasanaftercare@gmail.com</a>
+                </div>
+                <p style="font-size:0.7rem; color:rgba(255,255,255,0.3); margin-top:6px;">
+                    Terdaftar di Kemenkumham No.AHU-0006210.AH.01.12. Tahun 2020<br>
+                    Terdaftar di Dinas Sosial Pemko Binjai Nomor : 460-2879/2020
+                </p>
+            </div>
+            <div class="social">
+                <a href="https://www.facebook.com/aftercaresumut" target="_blank" title="Facebook"><i class="fab fa-facebook" style="color:#1877F2;"></i></a>
+                <a href="https://www.instagram.com/aftercarerehab?igsh=anpkeWk0dmMzN3lj" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E4405F;"></i></a>
+                <a href="#" target="_blank" title="YouTube"><i class="fab fa-youtube" style="color:#FF0000;"></i></a>
+                <a href="mailto:yayasanaftercare@gmail.com" title="Email"><i class="fas fa-envelope" style="color:#EA4335;"></i></a>
+                <a href="https://wa.me/6282166964850" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            </div>
+            <div class="copy">
+                &copy; 2026 Yayasan Rumah Sehat Harapan - Aftercare Sumut.
+                <span style="display:block; font-size:0.65rem; margin-top:4px; color:rgba(255,255,255,0.2);">
+                    "Kami bukan hanya sembuh, kami pulih untuk membantu."
+                </span>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<!-- AKHIR KONTEN PDF -->
+
+</body>
+</html>
